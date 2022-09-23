@@ -97,7 +97,7 @@ def load_model():
     model_location = Path("model")
     #st.write(model_location)
     with tf.keras.utils.CustomObjectScope({'standardize_da': standardize_da, "standardize_fo": standardize_fo}):
-        model = tf.keras.models.load_model(model_location, compile = False)
+        model = tf.keras.models.load_model(model_location)
         
     return model
 
