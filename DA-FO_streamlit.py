@@ -7,13 +7,16 @@ Created on Fri Sep 23 13:25:33 2022
 
 #%% imports
 import streamlit as st
+import pandas as pd
 from utils import translate_noatt
 
 #%% Streamlit
 ex = ""
 examples = ["Spiser du ikke til aften sammen med os?", "Jeg fik et nyt fotografiapparat"]
 
+df = pd.DataFrame([55.676098, 12.568337], columns = ["lat", "lon"]
 st.map([55.676098, 12.568337])
+                  
 st.title("Dansk-Færøsk Translator!")
 st.write("Eksempler på danske sætninger der kan oversættes")
 for i in examples:
