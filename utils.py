@@ -93,7 +93,7 @@ def load_model():
     save_dest.mkdir(exist_ok = True)
     
     model_location = Path("model")
-    st.write(model_location)
+    #st.write(model_location)
     with tf.keras.utils.CustomObjectScope({'standardize_da': standardize_da, "standardize_fo": standardize_fo}):
         model = tf.keras.models.load_model(model_location)
         
