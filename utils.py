@@ -53,7 +53,7 @@ def load_model():
     save_dest = Path('model')
     save_dest.mkdir(exist_ok=True)
     
-    f_checkpoint = Path("model")
+    f_checkpoint = Path("model/vers_1.1(100epochs)")
 
     if not f_checkpoint.exists():
         with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
