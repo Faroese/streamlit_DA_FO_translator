@@ -1,7 +1,7 @@
 #taken from this StackOverflow answer: https://stackoverflow.com/a/39225039
 import requests
 
-def download_file_from_google_drive(id, destination):
+def download_file_from_google_drive(URL, destination):
     URL = "https://drive.google.com/uc?id=1jQZfAMXiTbzlBKxI2PuJPP-zRaLJwlGV&export=download"
 
     session = requests.Session()
