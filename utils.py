@@ -46,11 +46,17 @@ def standardize_fo(text):
 
 # Hosted on my personal account until I figure something else out
 #cloud_model_location = "1PmsUezmJGwTQP51yTMsjLGe2okdo-yxr"
-cloud_model_location = "1jQZfAMXiTbzlBKxI2PuJPP-zRaLJwlGV"
-keras_metadata_location = "https://drive.google.com/uc?export=download&id=14POr3ef8RtDIjMFnwc1HW4Gv2kH0f_8P"
-saved_model_location = "https://drive.google.com/uc?export=download&id=1xw9OCmUz_FHz2OKUryb5Y2HRzMySgqZC"
-variables_location = "https://drive.google.com/uc?export=download&id=1R_HyR0u7MFQK_dONwxSEXqYbLmcfSy2Y"
-variables_data_location = "https://drive.google.com/uc?export=download&id=11PsnIHhGIJYALvtMGyudESswzMBzJh3-"
+#cloud_model_location = "1jQZfAMXiTbzlBKxI2PuJPP-zRaLJwlGV"
+
+#keras_metadata_location = "https://drive.google.com/uc?export=download&id=14POr3ef8RtDIjMFnwc1HW4Gv2kH0f_8P"
+#saved_model_location = "https://drive.google.com/uc?export=download&id=1xw9OCmUz_FHz2OKUryb5Y2HRzMySgqZC"
+#variables_location = "https://drive.google.com/uc?export=download&id=1R_HyR0u7MFQK_dONwxSEXqYbLmcfSy2Y"
+#variables_data_location = "https://drive.google.com/uc?export=download&id=11PsnIHhGIJYALvtMGyudESswzMBzJh3-"
+
+keras_metadata_location = "https://drive.google.com/uc?export=download&id=1MgB0mEDj3rlesDUDAoE_j7R6M42BNgJI"
+saved_model_location = "https://drive.google.com/uc?export=download&id=1RfOrM8XbtMUQ-8ScXQ4NBJuSo192ipBy"
+variables_location = "https://drive.google.com/uc?export=download&id=1XtIZfmlY02dvEHaryF5_3-S5juK-OjcY"
+variables_data_location = "https://drive.google.com/uc?export=download&id=15NwTZufc1FgW8xd1VMMVXWfdyxg1vJEv"
 @st.cache
 def load_model():
 
