@@ -50,7 +50,7 @@ cloud_model_location = "1jQZfAMXiTbzlBKxI2PuJPP-zRaLJwlGV"
 keras_metadata_location = "https://drive.google.com/uc?export=download&id=14POr3ef8RtDIjMFnwc1HW4Gv2kH0f_8P"
 saved_model_location = "https://drive.google.com/uc?export=download&id=1xw9OCmUz_FHz2OKUryb5Y2HRzMySgqZC"
 variables_location = "https://drive.google.com/uc?export=download&id=1R_HyR0u7MFQK_dONwxSEXqYbLmcfSy2Y"
-variables_data_location = "https://drive.google.com/file/d/11PsnIHhGIJYALvtMGyudESswzMBzJh3-/view?usp=sharing"
+variables_data_location = "https://drive.google.com/uc?export=download&id=11PsnIHhGIJYALvtMGyudESswzMBzJh3-"
 @st.cache
 def load_model():
 
