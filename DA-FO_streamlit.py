@@ -9,6 +9,28 @@ Created on Fri Sep 23 13:25:33 2022
 import streamlit as st
 from utils import translate_noatt
 
+#%% Load model
+
+# Hosted on my personal account until I figure something else out
+#cloud_model_location = "1PmsUezmJGwTQP51yTMsjLGe2okdo-yxr"
+cloud_model_location = "1jQZfAMXiTbzlBKxI2PuJPP-zRaLJwlGV"
+@st.cache
+def load_model():
+
+    save_dest = Path('model')
+    save_dest.mkdir(exist_ok=True)
+    
+    f_checkpoint = Path("model/skyAR_coord_resnet50.pt")
+
+    if not f_checkpoint.exists():
+        with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+            from GD_download import download_file_from_google_drive
+            download_file_from_google_drive(cloud_model_location, f_checkpoint)
+    
+    model = torch.load(f_checkpoint, map_location=device)
+    model.eval()
+    return model
+
 #%% Streamlit
 ex = ""
 examples = ["Spiser du ikke til aften sammen med os?", "Jeg fik et nyt fotografiapparat"]
