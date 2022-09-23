@@ -60,13 +60,16 @@ def load_model():
             from google_download import download_file_from_google_drive
             download_file_from_google_drive(cloud_model_location, f_checkpoint)
     
-    return f_checkpoint
+    with tf.keras.utils.CustomObjectScope({'standardize_da': standardize_da, "standardize_fo": standardize_fo}):
+        model = tf.keras.models.load_model(f_checkpoint)
+        
+    return model
 
 
-with tf.keras.utils.CustomObjectScope({'standardize_da': standardize_da, "standardize_fo": standardize_fo}):
-    model_path = load_model()
-    print(model_path)
-    model = tf.keras.models.load_model(model_path)
+#with tf.keras.utils.CustomObjectScope({'standardize_da': standardize_da, "standardize_fo": standardize_fo}):
+    #model_path = load_model()
+    #print(model_path)
+    #model = tf.keras.models.load_model(model_path)
 #%% Translator
 def translate_noatt(da_text, model = model, max_seq = 100):
     da_tokens = model.da_text_processor([da_text]) # Shape: (1, Ts)
