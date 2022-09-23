@@ -97,9 +97,9 @@ def load_model():
     
     save_dest = Path("model/assets")
     save_dest.mkdir(exist_ok = True)
-    p = Path("model").glob("**/*")
-    for i in p:
-        st.write(i)
+    #p = Path("model").glob("**/*")
+    #for i in p:
+    #    st.write(i)
     model_location = Path("model")
     #st.write(model_location)
     with tf.keras.utils.CustomObjectScope({'standardize_da': standardize_da, "standardize_fo": standardize_fo}):
