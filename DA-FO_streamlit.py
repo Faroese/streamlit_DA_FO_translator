@@ -13,6 +13,7 @@ from utils import translate_noatt
 ex = ""
 examples = ["Spiser du ikke til aften sammen med os?", "Jeg fik et nyt fotografiapparat"]
 
+st.map([55.676098, 12.568337])
 st.title("Dansk-Færøsk Translator!")
 st.write("Eksempler på danske sætninger der kan oversættes")
 for i in examples:
