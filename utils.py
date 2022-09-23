@@ -65,6 +65,7 @@ def load_model():
 
 with tf.keras.utils.CustomObjectScope({'standardize_da': standardize_da, "standardize_fo": standardize_fo}):
     model_path = load_model()
+    print(model_path)
     model = tf.keras.models.load_model(model_path)
 #%% Translator
 def translate_noatt(da_text, model = model, max_seq = 100):
