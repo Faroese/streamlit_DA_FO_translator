@@ -14,7 +14,7 @@ from utils import translate_noatt
 ex = ""
 examples = ["Spiser du ikke til aften sammen med os?", "Jeg fik et nyt fotografiapparat"]
 
-df = pd.DataFrame([55.676098, 12.568337], columns = ["lat", "lon"])
+df = pd.DataFrame([[55.676098,] [12.568337]], columns = ["lat", "lon"])
 st.map(df)
                   
 st.title("Dansk-Færøsk Translator!")
