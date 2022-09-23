@@ -47,6 +47,10 @@ def standardize_fo(text):
 # Hosted on my personal account until I figure something else out
 #cloud_model_location = "1PmsUezmJGwTQP51yTMsjLGe2okdo-yxr"
 cloud_model_location = "1jQZfAMXiTbzlBKxI2PuJPP-zRaLJwlGV"
+keras_metadata_location = "https://drive.google.com/uc?export=download&id=14POr3ef8RtDIjMFnwc1HW4Gv2kH0f_8P"
+saved_model_location = "https://drive.google.com/uc?export=download&id=1xw9OCmUz_FHz2OKUryb5Y2HRzMySgqZC"
+variables_location = "https://drive.google.com/uc?export=download&id=1R_HyR0u7MFQK_dONwxSEXqYbLmcfSy2Y"
+variables_data_location = "https://drive.google.com/file/d/11PsnIHhGIJYALvtMGyudESswzMBzJh3-/view?usp=sharing"
 @st.cache
 def load_model():
 
@@ -54,14 +58,41 @@ def load_model():
     save_dest.mkdir(exist_ok=True)
     
     f_checkpoint = Path("model")
-    #st.write(f_checkpoint)
+    
+    # downloading keras_metadata_location
     if not f_checkpoint.exists():
         with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
             from google_download import download_file_from_google_drive
-            download_file_from_google_drive(cloud_model_location, f_checkpoint)
+            download_file_from_google_drive(keras_metadata_location, f_checkpoint)
+    
+    # downloading keras_metadata_location
+    if not f_checkpoint.exists():
+        with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+            from google_download import download_file_from_google_drive
+            download_file_from_google_drive(saved_model_location, f_checkpoint)
+    
+    # downloading keras_metadata_location     
+    save_dest = Path("model\variables")
+    save_dest.mkdir(exist_ok = True)
+    f_checkpoint = Path("model\variables")
+    
+    if not f_checkpoint.exists():
+        with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+            from google_download import download_file_from_google_drive
+            download_file_from_google_drive(variables_location, f_checkpoint)
+    
+    if not f_checkpoint.exists():
+        with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+            from google_download import download_file_from_google_drive
+            download_file_from_google_drive(variables_data_location, f_checkpoint)
+    
+    save_dest = Path("model\assets")
+    save_dest.mkdir(exist_ok = True)
+    
+    model_location = Path("model")
     
     with tf.keras.utils.CustomObjectScope({'standardize_da': standardize_da, "standardize_fo": standardize_fo}):
-        model = tf.keras.models.load_model(f_checkpoint)
+        model = tf.keras.models.load_model(model_location)
         
     return model
 
