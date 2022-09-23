@@ -8,6 +8,7 @@ Created on Fri Sep 23 15:52:45 2022
 #%% imports
 import tensorflow as tf
 import tensorflow_text as tf_text
+import streamlit as st
 
 #%% Text Vectorization
 
@@ -40,9 +41,30 @@ def standardize_fo(text):
     return text
 
 #%% Load model
-with tf.keras.utils.CustomObjectScope({'standardize_da': standardize_da, "standardize_fo": standardize_fo}):
+#%% Load model
 
-    model = tf.keras.models.load_model(r"C:\Users\Heini\Desktop\Data Science\Fun Projects\DA-FO Translator\DA-FO Seq2Seq Models\vers_1.1(100epochs)")
+# Hosted on my personal account until I figure something else out
+#cloud_model_location = "1PmsUezmJGwTQP51yTMsjLGe2okdo-yxr"
+cloud_model_location = "1jQZfAMXiTbzlBKxI2PuJPP-zRaLJwlGV"
+@st.cache
+def load_model():
+
+    save_dest = Path('model')
+    save_dest.mkdir(exist_ok=True)
+    
+    f_checkpoint = Path("model")
+
+    if not f_checkpoint.exists():
+        with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+            from GD_download import download_file_from_google_drive
+            download_file_from_google_drive(cloud_model_location, f_checkpoint)
+    
+    return f_checkpoint
+
+
+with tf.keras.utils.CustomObjectScope({'standardize_da': standardize_da, "standardize_fo": standardize_fo}):
+    model_path = load_model()
+    model = tf.keras.models.load_model(model_path)
 #%% Translator
 def translate_noatt(da_text, model = model, max_seq = 100):
     da_tokens = model.da_text_processor([da_text]) # Shape: (1, Ts)
