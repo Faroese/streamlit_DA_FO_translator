@@ -57,30 +57,33 @@ def load_model():
     save_dest = Path('model')
     save_dest.mkdir(exist_ok=True)
     
-    f_checkpoint = Path("model")
+    f_checkpoint = Path("model/keras_metadata.pb")
     
-    # downloading keras_metadata_location
+    # downloading keras_metadata
     if not f_checkpoint.exists():
         with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
             from google_download import download_file_from_google_drive
             download_file_from_google_drive(keras_metadata_location, f_checkpoint)
     
-    # downloading keras_metadata_location
+    # downloading saved_model
+    f_checkpoint = Path("model/saved_model.pb")
     if not f_checkpoint.exists():
         with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
             from google_download import download_file_from_google_drive
             download_file_from_google_drive(saved_model_location, f_checkpoint)
     
-    # downloading keras_metadata_location     
-    save_dest = Path("model\variables")
+    # downloading variables   
+    save_dest = Path("model/variables")
     save_dest.mkdir(exist_ok = True)
-    f_checkpoint = Path("model\variables")
+    f_checkpoint = Path("model/variables/variables.index")
     
     if not f_checkpoint.exists():
         with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
             from google_download import download_file_from_google_drive
             download_file_from_google_drive(variables_location, f_checkpoint)
-    
+            
+    # downloading variables_data
+    f_checkpoint = Path("model/variables/variables.data-00000-of-00001")
     if not f_checkpoint.exists():
         with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
             from google_download import download_file_from_google_drive
