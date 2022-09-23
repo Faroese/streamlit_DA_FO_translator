@@ -89,7 +89,7 @@ def load_model():
             from google_download import download_file_from_google_drive
             download_file_from_google_drive(variables_data_location, f_checkpoint)
     
-    save_dest = Path("model\assets")
+    save_dest = Path("model/assets")
     save_dest.mkdir(exist_ok = True)
     p = Path("model").glob("**/*")
     for i in p:
