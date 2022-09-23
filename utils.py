@@ -65,7 +65,7 @@ def load_model():
         
     return model
 
-
+model = load_model()
 #with tf.keras.utils.CustomObjectScope({'standardize_da': standardize_da, "standardize_fo": standardize_fo}):
     #model_path = load_model()
     #print(model_path)
