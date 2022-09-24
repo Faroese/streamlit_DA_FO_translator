@@ -42,7 +42,6 @@ def standardize_fo(text):
     return text
 
 #%% Load model
-#%% Load model
 
 # Hosted on my personal account until I figure something else out
 #cloud_model_location = "1PmsUezmJGwTQP51yTMsjLGe2okdo-yxr"
@@ -53,10 +52,15 @@ def standardize_fo(text):
 #variables_location = "https://drive.google.com/uc?export=download&id=1R_HyR0u7MFQK_dONwxSEXqYbLmcfSy2Y"
 #variables_data_location = "https://drive.google.com/uc?export=download&id=11PsnIHhGIJYALvtMGyudESswzMBzJh3-"
 
-keras_metadata_location = "https://drive.google.com/uc?export=download&id=1MgB0mEDj3rlesDUDAoE_j7R6M42BNgJI"
-saved_model_location = "https://drive.google.com/uc?export=download&id=1RfOrM8XbtMUQ-8ScXQ4NBJuSo192ipBy"
-variables_location = "https://drive.google.com/uc?export=download&id=1XtIZfmlY02dvEHaryF5_3-S5juK-OjcY"
-variables_data_location = "https://drive.google.com/uc?export=download&id=15NwTZufc1FgW8xd1VMMVXWfdyxg1vJEv"
+#keras_metadata_location = "https://drive.google.com/uc?export=download&id=1MgB0mEDj3rlesDUDAoE_j7R6M42BNgJI"
+#saved_model_location = "https://drive.google.com/uc?export=download&id=1RfOrM8XbtMUQ-8ScXQ4NBJuSo192ipBy"
+#variables_location = "https://drive.google.com/uc?export=download&id=1XtIZfmlY02dvEHaryF5_3-S5juK-OjcY"
+#variables_data_location = "https://drive.google.com/uc?export=download&id=15NwTZufc1FgW8xd1VMMVXWfdyxg1vJEv"
+
+keras_metadata_location = "https://drive.google.com/uc?export=download&id=1wiFYjyON8nwfoJS7S9nhCQbzLOfLA0n6"
+saved_model_location = "https://drive.google.com/uc?export=download&id=1I6cczqR0VLOip2Lc9L74jdZwqHWDQDNQ"
+variables_location = "https://drive.google.com/uc?export=download&id=1dxdNTrtvx1KspgiqrJdfYIIs9J1qCT6T"
+variables_data_location = "https://drive.google.com/uc?export=download&id=1wGY5aNzyra8Un5Fv4nrNFcGKqI59W4pW"
 @st.cache
 def load_model():
 
@@ -97,21 +101,15 @@ def load_model():
     
     save_dest = Path("model/assets")
     save_dest.mkdir(exist_ok = True)
-    #p = Path("model").glob("**/*")
-    #for i in p:
-    #    st.write(i)
     model_location = Path("model")
-    #st.write(model_location)
+
     with tf.keras.utils.CustomObjectScope({'standardize_da': standardize_da, "standardize_fo": standardize_fo}):
         model = tf.keras.models.load_model(model_location)
         
     return model
 
 model = load_model()
-#with tf.keras.utils.CustomObjectScope({'standardize_da': standardize_da, "standardize_fo": standardize_fo}):
-    #model_path = load_model()
-    #print(model_path)
-    #model = tf.keras.models.load_model(model_path)
+
 #%% Translator
 def translate_noatt(da_text, model = model, max_seq = 100):
     da_tokens = model.da_text_processor([da_text]) # Shape: (1, Ts)
@@ -120,7 +118,6 @@ def translate_noatt(da_text, model = model, max_seq = 100):
     da_hstate = tf.concat([fhstate, bhstate], -1)
     da_cstate = tf.concat([fcstate, bcstate], -1)
     state = [da_hstate, da_cstate]
-    #print(da_rnn_out.shape)
     
     index_from_string = tf.keras.layers.StringLookup(
         vocabulary = model.fo_text_processor.get_vocabulary(),
