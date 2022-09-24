@@ -21,7 +21,7 @@ st.title("Dansk-Færøsk Translator \U0001F1E9\U0001F1F0 \U0001F1EB\U0001F1F4")
 for i in examples:
     ex += "- " + i + "\n"
 st.markdown("Eksempler på danske sætninger der kan oversættes" + "\n" + ex)
-input_text = st.text_input("Dansk \U0001F1E9\U0001F1F0")
+input_text = st.text_input("Dansk \U0001F1E9\U0001F1F0 - Tryk enter/retur for at oversætte")
 output = translate_noatt(input_text)
 st.text_area(label = "Færøsk \U0001F1EB\U0001F1F4", value = output, height = 200, disabled = True)
 st.map(df)
