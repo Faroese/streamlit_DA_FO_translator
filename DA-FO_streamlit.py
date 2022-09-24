@@ -12,7 +12,7 @@ from utils import translate_noatt
 
 #%% Streamlit
 ex = ""
-examples = ["Spiser du ikke til aften sammen med os?", "Jeg fik et nyt fotografiapparat"]
+examples = ["Spiser du ikke til aften sammen med os?", "Jeg fik et nyt fotografiapparat.", "Jeg tror de så os.", "Jeg læste en bog."]
 
 df = pd.DataFrame([[55.676098, 12.568337], [62.007864, -6.790982]], columns = ["lat", "lon"])
                   
